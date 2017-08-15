@@ -1,0 +1,128 @@
+{
+  "template": "apache_*",
+  "settings": {
+    "index.refresh_interval": "5s",
+    "analysis": {
+      "analyzer": {
+        "path_analyzer": {
+          "tokenizer": "path_tokenizer"
+        },
+        "url_analyzer": {
+          "tokenizer": "url_tokenizer"
+        }
+      },
+      "tokenizer": {
+        "path_tokenizer": {
+          "type": "path_hierarchy",
+          "delimiter": "/",
+          "skip": 0
+        },
+        "url_tokenizer": {
+          "type": "path_hierarchy",
+          "delimiter": "/",
+          "skip": 2
+        }
+      }
+    }
+  },
+  "mappings": {
+    "_default_": {
+      "dynamic_templates": [
+        {
+          "message_field": {
+            "mapping": {
+              "norms": false,
+              "type": "text"
+            },
+            "match_mapping_type": "string",
+            "match": "message"
+          }
+        },
+        {
+          "string_fields": {
+            "mapping": {
+              "norms": false,
+              "type": "text",
+              "fields": {
+                "raw": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              }
+            },
+            "match_mapping_type": "string",
+            "match": "*"
+          }
+        }
+      ],
+      "properties": {
+        "response": {
+          "type": "long",
+          "doc_values": "true"
+        },
+        "bytes": {
+          "type": "long",
+          "doc_values": "true"
+        },
+        "request": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "ignore_above": 256,
+              "type": "keyword"
+            },
+            "path": {
+              "type": "text",
+              "fielddata": true,
+              "analyzer": "path_analyzer"
+            }
+          }
+        },
+        "referrer": {
+          "type": "text",
+          "fields": {
+            "raw": {
+              "ignore_above": 256,
+              "type": "keyword"
+            },
+            "path": {
+              "type": "text",
+              "fielddata": true,
+              "analyzer": "url_analyzer"
+            }
+          }
+        },
+        "geoip": {
+          "dynamic": true,
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            },
+            "ip": {
+              "type": "ip"
+            },
+            "continent_code": {
+              "type": "keyword"
+            },
+            "country_name": {
+              "type": "keyword"
+            }
+          },
+          "type": "object"
+        },
+        "timestamp": {
+
+           "type": "date"
+
+        },
+        "@version": {
+          "type": "keyword"
+        }
+      },
+      "_all": {
+        "enabled": true
+      }
+    }
+  }
+}
+
