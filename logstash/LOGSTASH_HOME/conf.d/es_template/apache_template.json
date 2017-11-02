@@ -81,12 +81,15 @@
         },
         "request": {
           "type": "text",
-		  "analyzer": "path_analyzer",
           "fields": {
             "keyword":{
               "type": "keyword",
               "ignore_above": 256
-            }
+            },
+	    "path": {
+	      	"type": "text",
+		"analyzer": "path_analyzer"
+            }	
           }
         },
         "referrer": {
@@ -95,7 +98,11 @@
             "keyword":{
               "type": "keyword",
               "ignore_above": 256
-            }
+            },
+	    "path": {
+	      	"type": "text",
+		"analyzer": "url_analyzer"
+            }	
           }
         },
         "geoip": {
@@ -130,23 +137,11 @@
             }
           }
         },
-		"forwardip": {
-		  "type": "ip",
-		  "fields": {
-			"keyword":{
-			  "type": "keyword",
-			  "ignore_above": 256
-			}
-		  }
-		},
+	"forwardip": {
+	    "type": "ip"
+	},
         "@version": {
-          "type": "integer",
-          "fields": {
-            "keyword":{
-              "type": "keyword",
-              "ignore_above": 256
-            }
-          }
+          "type": "integer"
         }
       }
     }
