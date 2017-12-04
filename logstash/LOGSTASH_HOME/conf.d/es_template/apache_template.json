@@ -1,30 +1,9 @@
 {
-  "template": "*",
+  "template": "swissbib-*",
   "version": 1,
   "settings": {
     "index": {
-      "refresh_interval": "5s",
-      "analysis": {
-        "analyzer": {
-          "path_analyzer": {
-            "tokenizer": "path_tokenizer"
-          },
-          "url_analyzer": {
-            "tokenizer": "url_tokenizer"
-          }
-        },
-        "tokenizer": {
-          "path_tokenizer": {
-            "type": "path_hierarchy",
-            "delimiter": "/",
-            "skip": 0
-          },
-          "url_tokenizer": {
-            "type": "path_hierarchy",
-            "delimiter": "/",
-            "skip": 2
-          } 
-        }
+      "refresh_interval": "5s"
       }
     }
   },
@@ -61,6 +40,9 @@
         "enabled": true
       },
       "properties": {
+        "@version": {
+          "type": "integer"
+        },
         "duration": {
           "type": "long",
           "fields": {
@@ -77,32 +59,6 @@
               "type": "keyword",
               "ignore_above": 256
             }
-          }
-        },
-        "request": {
-          "type": "text",
-          "fields": {
-            "keyword":{
-              "type": "keyword",
-              "ignore_above": 256
-            },
-	    "path": {
-	      	"type": "text",
-		"analyzer": "path_analyzer"
-            }	
-          }
-        },
-        "referrer": {
-          "type": "text",
-          "fields": {
-            "keyword":{
-              "type": "keyword",
-              "ignore_above": 256
-            },
-	    "path": {
-	      	"type": "text",
-		"analyzer": "url_analyzer"
-            }	
           }
         },
         "geoip": {
@@ -137,12 +93,9 @@
             }
           }
         },
-	"forwardip": {
-	    "type": "ip"
-	},
-        "@version": {
-          "type": "integer"
-        }
+	      "forwardip": {
+	        "type": "ip"
+	      }
       }
     }
   }
