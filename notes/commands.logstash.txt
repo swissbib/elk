@@ -1,0 +1,10 @@
+
+1) How to install / remove a logstash plugin
+
+sudo su -c "/usr/share/logstash/bin/logstash-plugin remove logstash-filter-translate" -s /bin/sh logstash
+
+sudo su -c "/usr/share/logstash/bin/logstash-plugin install logstash-filter-translate" -s /bin/sh logstash
+
+Important: in case of update the plugin has to be updated too (not done automatically)
+
+
