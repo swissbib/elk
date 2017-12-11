@@ -6,7 +6,6 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - /usr/local/vufind/apachelogs/access.swissbib.grepeasy*.log
-    - /usr/local/vufind/apachelogtemp/access.swissbib.grepeasy*.log*
   tags: ["green"]
 #  tags: ["sb-uvf1"]
   document_type: apache
