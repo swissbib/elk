@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/etc/logstash/conf.d/dictionaries/update_logstash_dictionaries.py", line 107, in <module>
+    update_libadmin_library_codes()
+  File "/etc/logstash/conf.d/dictionaries/update_logstash_dictionaries.py", line 85, in update_libadmin_library_codes
+    libs = json.loads(requests.get('https://www.swissbib.ch/mapportal.json').text)
+  File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.5/json/decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.5/json/decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

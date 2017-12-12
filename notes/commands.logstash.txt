@@ -4,7 +4,23 @@
 sudo su -c "/usr/share/logstash/bin/logstash-plugin remove logstash-filter-translate" -s /bin/sh logstash
 
 sudo su -c "/usr/share/logstash/bin/logstash-plugin install logstash-filter-translate" -s /bin/sh logstash
+sudo su -c "/usr/share/logstash/bin/logstash-plugin install logstash-filter-geoip" -s /bin/sh logstash
+
+
 
 Important: in case of update the plugin has to be updated too (not done automatically)
+
+
+
+
+
+2) additional commands
+sudo su -c "/usr/share/logstash/bin/logstash-plugin list" -s /bin/sh logstash
+astonishing: although the two plugins mentioned above are listed I have to install them
+
+
+3) we need additional plugins
+logstash-filter-geoip
+logstash-filter-translate
 
 
