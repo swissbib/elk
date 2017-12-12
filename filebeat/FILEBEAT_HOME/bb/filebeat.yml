@@ -6,8 +6,9 @@ filebeat.prospectors:
 - input_type: log
   paths:
     - /usr/local/vufind/apachelogs/access.swissbib.grepeasy*.log
-    - /usr/local/vufind/apachelogs.reindex/access.swissbib.grepeasy*.log*
-    - /usr/local/vufind/apachelogtemp/access.swissbib.grepeasy*.log*
+    - /usr/local/vufind/apachelogs.1/access.swissbib.grepeasy*.log*
+    - /usr/local/vufind/apachelogs.2/access.swissbib.grepeasy*.log*
+    - /usr/local/vufind/apachelogs.3/access.swissbib.grepeasy*.log*
   tags: ["orange"]
 #  tags: ["sb-uvf9"]
   document_type: apache
