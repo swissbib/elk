@@ -39,17 +39,14 @@
 				"clientip": {
 	    		"type": "ip"
 				},
+				"hour": {
+					"type": "long"
+				},
         "geoip": {
           "type": "object",
           "properties": {
             "location": {
-              "type": "geo_point",
-              "fields": {
-                "keyword":{
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
+              "type": "geo_point"
             },
             "country_name": {
               "type": "text",
