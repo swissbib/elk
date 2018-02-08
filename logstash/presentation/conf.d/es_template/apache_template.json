@@ -3,7 +3,29 @@
   "version": 1,
   "settings": {
     "index": {
-      "refresh_interval": "5s"
+      "refresh_interval": "5s",
+	    "analysis": {
+				"analyzer": {
+					"path": {
+					"type": "custom",
+					"tokenizer": "path_hierarchy"
+					},
+					"domain": {
+					"tokenizer": "domain"
+					}
+				},
+				"tokenizer": {
+					"path_hierarchy": {
+					"type": "path_hierarchy",
+					"delimiter": "/",
+					"skip": 2
+					},
+					"domain": {
+						"type": "pattern",
+						"pattern": "(http[s]?:\\/\\/|\\/.*)"
+					}
+				}
+      }
     }
   },
   "mappings": {
@@ -42,6 +64,19 @@
         "@version": {
           "type": "integer"
         },
+				"trackurl": {
+					"type": "text",
+					"fields": {
+						"path": {
+							"type": "text",
+							"analyzer": "path"
+						},
+						"domain": {
+							"type": "text",
+							"analyzer": "domain"
+						}
+					}
+				},
         "duration": {
           "type": "long",
           "fields": {
