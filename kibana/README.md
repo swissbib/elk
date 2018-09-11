@@ -8,9 +8,7 @@ Alle Dashboards haben eine Voreinstellung der Zeitspanne von 30 Tagen. Das heiss
 Wenn man weiter zurück gehen möchte, kann man dies machen indem man die Zeitspanne ändert. Dazu klicked man rechts oben auf den Timepicker (angeschrieben mit `Last 30 Days` wenn nichts geändert wurde). Nach dem Klick öffnet sich ein Menu in dem man eine Zeitspanne auswählen kann. 
 
 ### Wie kann ich etwas in einem Dashboard ändern?
-Solange eine Änderung in einem Dashboard nicht gespeichert wird, gehen alle Änderungen verloren.
-
-Damit man eine Änderung an einem Dashboard vorgenommen werden kann, muss auf `Edit` in der Menuleiste rechts oben rechts gedrückt werden.
+Ein Dashboard kann bearbeitet werden, nachdem man auf den `Edit`-Button rechts oben in der Menuleiste drückt. Nun können Änderungen vorgenommen werden. **WICHTIG:** Änderungen werden nur gespeichert, wenn man explizit auf `Save` drückt und dann nocheinmal auf `Save` drückt. Einmal gespeichert, kann das alte Dashboard nicht einfach so wiederhergestellt werden. 
 
 ### Was ist der Unterschied zwischen IP Adresse und Session ID?
 Wir sammlen die IP Adresse und Session IDs auf verschiedene Arten. 
@@ -74,6 +72,8 @@ Eine detailierte Anleitung findet man [hier](https://www.elastic.co/guide/en/kib
 
 **Verschiedenes:** Vor allem wie gesucht wird: Suchoperatoren, Sortierungen der Suchresultate, Anzahl Treffer pro Seite und Filter Publikationsdatum von->bis.
 
+**Linked Data:** Visualisierungen zu den Linked Data Seiten (Knowledge Cards).
+
 ### Wie Suche ich in der Suchleiste oben am Dashboard?
 
-Die Suche im Suchschlitz basiert auf der Lucene Syntax. [Genaue Dokumentation kann hier gefunden werden](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
+Die Suche im Suchschlitz basiert auf der Lucene Syntax. [Genaue Dokumentation kann hier gefunden werden](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html). 
