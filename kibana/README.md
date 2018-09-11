@@ -1,14 +1,16 @@
 ## Allgemeine Informationen
-Jedes Dashboard stellt verschiedene Informationen in Form von Visualisierungen zusammen. Zusammen sollen diese eine Frage beantworten oder einen Überblick zu einem Thema liefern. 
+Die Navigation zwischen den Dashboards ist möglich mit den Naviationslinks oben auf jedem Dashboard. Jedes Dashboard stellt Visualisierungen zum Thema im Titel des Dashboards zusammen. Eine Zusammenfassung der Dashboards kann unten eingesehen werden.
 
-Grundsätzlich zeigen alle Dashboards nur Daten aus den letzten 30 Tagen ausser es steht etwas anderes. Die dargestellte Zeitspanne kann geändert werden, in dem man rechts oben auf die Zeitanzeige drücken. 
+### Zeitspanne
 
-Zusätzlich muss man sich immer genau überlegen, was für eine Frage man stellt und ob die vorhandenen Zahlen diese auch wirklich beantworten können.
+Alle Dashboards haben eine Voreinstellung der Zeitspanne von 30 Tagen. Das heisst die dargestellten Zahlen und Diagramme repäsentieren nur Daten welche in den letzten 30 Tagen gesammelt wurden.
+
+Wenn man weiter zurück gehen möchte, kann man dies machen indem man die Zeitspanne ändert. Dazu klicked man rechts oben auf den Timepicker (angeschrieben mit `Last 30 Days` wenn nichts geändert wurde). Nach dem Klick öffnet sich ein Menu in dem man eine Zeitspanne auswählen kann. 
 
 ### Wie kann ich etwas in einem Dashboard ändern?
 Solange eine Änderung in einem Dashboard nicht gespeichert wird, gehen alle Änderungen verloren.
 
-Damit man eine Änderung an einem Dashboard vorgenommen werden kann, muss auf 'Edit' in der Menuleiste rechts oben rechts gedrückt werden.
+Damit man eine Änderung an einem Dashboard vorgenommen werden kann, muss auf `Edit` in der Menuleiste rechts oben rechts gedrückt werden.
 
 ### Was ist der Unterschied zwischen IP Adresse und Session ID?
 In manchen Visualisierungen sind die Daten nach IP Adresse oder Session ID zusammengefasst. Die IP Adresse bezieht sich auf den PC/Netzwerk von dem auf Swissbib zugegriffen wird, während die Session ID jedesmal wenn man neu auf die Webseite kommt neu generiert werden kann (manchmal kann auch eine Session weitergeführt werden, solange man den Browser nicht schliesst). Das heisst, wenn Daten basierend auf den Session IDs sollten immer höher sein als bei Zahlen basierend auf IP Adressen.
