@@ -13,18 +13,50 @@ Solange eine Änderung in einem Dashboard nicht gespeichert wird, gehen alle Än
 Damit man eine Änderung an einem Dashboard vorgenommen werden kann, muss auf `Edit` in der Menuleiste rechts oben rechts gedrückt werden.
 
 ### Was ist der Unterschied zwischen IP Adresse und Session ID?
-In manchen Visualisierungen sind die Daten nach IP Adresse oder Session ID zusammengefasst. Die IP Adresse bezieht sich auf den PC/Netzwerk von dem auf Swissbib zugegriffen wird, während die Session ID jedesmal wenn man neu auf die Webseite kommt neu generiert werden kann (manchmal kann auch eine Session weitergeführt werden, solange man den Browser nicht schliesst). Das heisst, wenn Daten basierend auf den Session IDs sollten immer höher sein als bei Zahlen basierend auf IP Adressen.
+Wir sammlen die IP Adresse und Session IDs auf verschiedene Arten. 
 
-Erkennen kann man das ganze am Titel der Visualisierung. Wenn dort IP Adresse oder Session ID drin steht, werden die Daten danach Zusammengefasst.
+Die IP Adresse ist fast immer dabei, ausser bei allen jusbib Datensätzen (ein Konfigurationsproblem, welches in Zukunft gelöst werden soll). Die IP Adresse designiert die Organisation/den PC von wo aus ein Aufruf gemacht wird. So haben alle Aufrufe, die an einem Bibliotheksrechner in Bern oder Basel gemacht haben je die gleichen IP Adressen.
 
-Achtung: Nicht alle Datensätze haben eine Session ID oder eine IP Adresse, d.h. diese Angaben sind mit Vorsicht zu geniessen. 
+Die Session ID wird über ein Cookie auf dem PC des Nutzers gespeichert und von dort übertragen. Ein Cookie bleibt bestehen bis es vom Nutzer gelöscht wird oder der Browser geschlossen wird.
+Dies führt dazu, dass eine Reihe von Aufrufen keine Session ID haben. 
+1. Immer der erste Aufruf eines Users hat keine Session ID.
+2. Alle Aufrufe von Usern ohne Cookies haben keine Session ID.
+3. Wenn ein Nutzer nach dem ersten Aufruf wieder geht oder nur Dinge macht, die keine Session ID erzeugen.
+
+Etwa 20% aller Aufrufe haben keine Session ID. Davon sind etwa 8% erste Aufrufe einer Session.
+
+Das heisst alle Visualisierungen bei welchen nach IP Adresse oder Session ID gezählt wird, muss dies bedacht werden, wenn man die Zahlen sich ansieht.
+
+### Was sind die Filter?
+Die eingestellten Filter werden oben links unter dem Suchschlitz dargestellt. Die Filter sind entweder rot oder grau und können leicht Transparent sein.
+
+Filter funktionieren wie Facetten von Swissbib. Ein Filter kann auf ein einzeles Datenfeld angewendet werden. Ein grauer Filter entfernt alles, wo der Filter nicht zutrifft. Ein roter Filter entfernt alles, wo der Filter zutrifft. Transparente Filter sind nicht aktiv.
+
+Voreingestellt sind insgesammt sechs Filter: 
+- `Bots` (akitv) Entfernt alle Aufrufe die von Bots gemacht werden.
+- `Zend Attribute Resolver` (akitv) Entfernt alle Aufrufe die vom Zend Framework gemacht werden.
+- `Zurückgewiesene Aufrufe` (akitv) Entfernt alle Aufrufe die vom Server abgelehnt werden (z.B. wenn 404 zurück kommt).
+- `Swissbib` (nicht akitv) Zeige nur Aufrufe die auf swissbib grün gemacht wurden.
+- `Basel/Bern` (nicht akitv) Zeige nur Aufrufe die auf swissbib orange gemacht wurden.
+- `Jusbib` (nicht akitv) Zeige nur Aufrufe die auf jusbib gemacht wurden.
+
+**Bitte keine Filter löschen!**
+
+Wenn man mit der Maus über einen Filter geht, erscheinen fünf Optionen:
+- `Aktivieren` -> Ob der Filter aktiv ist oder nicht.
+- `Pinnen` -> Der Filter wird angemacht und kommt mit, wenn man das Tab wechselt (z.B. vom `Dashbaord` in den `Discovery`-Bereich)
+- `Lupensymbol` -> Führt dazu, dass der Filter negiert wird.
+- `Abfall` -> Filter löschen.
+- `Bleistift` -> Filter bearbeiten.
+
+Ein Filter kann mit dem `Add a filter +` gemacht werden. Man muss hier 2 - 3 Felder ausfüllen. Zum einen muss man ein Datenfeld auswählen auf welches der Filter angewendet werden soll. Als zweites der Typ des Filters. Und drittes, je nach Typ, den Wert des Filters eingeben.
+
+Eine detailierte Anleitung findet man [hier](https://www.elastic.co/guide/en/kibana/5.6/field-filter.html).
 
 ### Was wird auf den einzelnen Dashboards dargestellt?
-**Allgemein (Letzter Monat):** Ein kompletter Überblick über die Nutzungszahlen der Webseiten. Jede Zahl bezieht sich auf alle Aufrufe.
+**Allgemein (Letzter Monat):** Ein allgemeiner Überblick über die Nutzungszahlen. 
 
-**Allgemein (Letztes Jahr):** Beinhaltet allgemeine Fragen zur Nutzung basierend auf Anzahl Klicks Total. Bezieht sich auf das letzte Jahr. Ältere Daten werden ignoriert. Bezieht sich eigentlich immer auf alle Aufrufe und unterteilt nicht nach einzelnen Nutzern.
-
-**Statisiken Besucher:** Ein Besucher ist eine Person mit der selben IP-Adresse oder Session-ID. Diese sind aber nicht zu 100% verlässlich und geben auch unterschiedliche Resultate.
+**Statisiken Besucher:** Ein Besucher ist eine Person mit der selben IP-Adresse oder Session-ID. 
 
 **Facetten Auswertung:** Zeigt die Nutzung aller Facetten. Beinhaltet auch facetten suchen aus erweiterten suchen. Zält eine Suche nach zwei Bibliotheken oder nach zwei Sprachen als eine einzige Suche an. Unterscheidet nicht zwischen Facetten von Normalen und Erweiterten Suchen. Die Kreise zeigen jeweils die 10 am meisten genutzten Facetten-Werte jeder Facette.
 
@@ -41,18 +73,6 @@ Achtung: Nicht alle Datensätze haben eine Session ID oder eine IP Adresse, d.h.
 **Technische Daten:** Geräte, OS, Browser, Verweis von. Hier sind die Daten nach Session (Nutzer) unterteilt. Diese Daten sind aber mit vorsicht zu geniessen, da sie auf der Auswertung des Useragents basieren. Dieser kann manipuliert werden und ist nicht immer sehr eindeutig. z.B. können Tablets kaum erkannt werden da diese sich nicht als solche zu erkennen geben.
 
 **Verschiedenes:** Vor allem wie gesucht wird: Suchoperatoren, Sortierungen der Suchresultate, Anzahl Treffer pro Seite und Filter Publikationsdatum von->bis.
-
-### Was sind die Filter?
-
-Grundsätzlich sind alle Anfragen von Bots und über Touchpoint gefiltert. 
-
-Neue Filter können erstellt werden, in dem auf die Daten geklick wird in den Visualisierungen. Diese erscheinen dann oben unter dem Suchschlitz. Dort können sie deaktiviert, gepinnt, umgekehrt/negiert, gelöscht und geändert werden.
-
-Ein deaktivierter Filter hat keinen Effekt mehr auf die Daten, dies sieht man daran, dass er ausgegraut ist. 
-
-Wenn ein Filter gepinnt wird ist bleibt er auch vorhanden, wenn man zu einem anderen Dashboard oder zum Discover wechselt. Neue Filter sind standard-mässig gepinnt.
-
-Das ändern eines Filters muss in der [DSL-Query Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.3/query-dsl.html) geschehen. Und man kann einem Filter ein Label geben.
 
 ### Wie Suche ich in der Suchleiste oben am Dashboard?
 
