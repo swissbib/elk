@@ -101,8 +101,9 @@ def update_libadmin_library_codes():
             file.write(' "' + item[0] + '": "' + item[1] + '"\n')
 
 
-update_format_codes()
-update_jus_classifcation_codes()
-update_language_codes()
-update_libadmin_library_codes()
-update_library_network_codes()
+if __name__ == '__main__':
+    update_format_codes()
+    update_jus_classifcation_codes()
+    update_language_codes()
+    update_libadmin_library_codes()
+    update_library_network_codes()
