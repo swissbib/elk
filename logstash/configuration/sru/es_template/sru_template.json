@@ -1,0 +1,75 @@
+{
+	"template": "sru-*",
+  "version": 1,
+  "settings": {
+    "index": {
+      "refresh_interval": "5s"
+    }
+  },
+  "mappings": {
+    "logs": {
+      "dynamic_templates": [
+        {
+          "message_field": {
+            "path_match": "message",
+            "mapping": {
+              "norms": false,
+              "type": "text"
+            },
+            "match_mapping_type": "string"
+          }
+        },
+        {
+          "string_fields": {
+            "mapping": {
+              "norms": false,
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "match_mapping_type": "string",
+            "match": "*"
+          }
+        }
+      ],
+      "properties": {
+				"clientip": {
+	    		"type": "ip"
+				},
+				"hour": {
+					"type": "long"
+				},
+        "geoip": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "geo_point"
+            },
+            "country_name": {
+              "type": "text",
+              "fields": {
+                "keyword":{
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "city_name": {
+              "type": "text",
+              "fields": {
+                "keyword":{
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+# ------------ Data path ------------------
+#
+# Which directory should be used by logstash and its plugins
+# for any persistent needs. Defaults to LOGSTASH_HOME/data
+#
+path.data: /var/lib/logstash
+
+# Pipeline settings.
+
+path.settings: /etc/logstash/piplines.yml
+
+config.reload.automatic: true
+config.reload.interval: 3s
+
+# Logstash queue is stored to disk instead of in-memory. Ensures
+# no data is lost.
+queue.type: persisted
+path.queue: /var/lib/logstash/queue
+queue.max_bytes: 4gb
+
+log.level: warn
+path.logs: /var/log/logstash
