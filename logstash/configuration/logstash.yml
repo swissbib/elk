@@ -5,12 +5,9 @@
 #
 path.data: /var/lib/logstash
 
-# Pipeline settings.
-
-path.settings: /etc/logstash/piplines.yml
-
-config.reload.automatic: true
-config.reload.interval: 3s
+# use these settings for debugging. Will not validate grok-patterns.
+# config.reload.automatic: true
+# config.reload.interval: 3s
 
 # Logstash queue is stored to disk instead of in-memory. Ensures
 # no data is lost.
