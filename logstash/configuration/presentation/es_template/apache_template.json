@@ -56,10 +56,7 @@
             "match": "*"
           }
         }
-      ],
-      "_all": {
-        "enabled": true
-      },
+      ]
       "properties": {
         "@version": {
           "type": "integer"
