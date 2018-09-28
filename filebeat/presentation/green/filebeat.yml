@@ -2,17 +2,22 @@
 # Attention: This is only a template. Don't edit, Ansible will overwrite!
 # Instead copy to /etc/filebeat/filebeat.yml, adapt to your needs, and restart filebeat.service.
 
-filebeat.prospectors:
-- input_type: log
-  paths:
-    - /usr/local/vufind/apachelogs/access.swissbib.grepeasy*.log
-  tags: ["green"]
-#  tags: ["sb-uvf1"]
-  document_type: apache
+
+filebeat.inputs:
+  - type: log
+    paths:
+      - /usr/local/vufind/apachelogs/access.swissbib.grepeasy*.log
+    fields:
+      source: green
+    fields_under_root: true
+    exclude_files: ['\.gz$']
+
 output.logstash:
   hosts: ["sb-usg1.swissbib.unibas.ch:5044"]
-  logging.to_files: true
-  logging.files:
-    path: /var/log/filebeat
-    name: filebeat
-    rotateeverybytes: 10485760
+
+logging.to_files: true
+logging.level: warning
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  rotateeverybytes: 10485760
