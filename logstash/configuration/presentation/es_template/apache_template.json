@@ -56,7 +56,7 @@
             "match": "*"
           }
         }
-      ]
+      ],
       "properties": {
         "@version": {
           "type": "integer"
