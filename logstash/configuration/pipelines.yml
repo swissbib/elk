@@ -1,6 +1,6 @@
 - pipeline.id: presentation
   path.config: "/etc/logstash/presentation"
-  pipline.workers: 3
+  pipeline.workers: 3
 - pipeline.id: sru
   path.config: "/etc/logstash/sru"
   pipeline.workers: 1
