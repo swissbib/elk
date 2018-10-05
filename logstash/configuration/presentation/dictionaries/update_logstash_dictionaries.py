@@ -1,16 +1,22 @@
-import requests
+import urllib.request
 import json
 
 __doc__ = 'Requests the code translations for format codes, jus-classifications, iso-language codes and library ' \
           'union codes from vuFind github and library and region codes from libadmin and creates yaml files from them.'
 
 
-def update_format_codes():
-    file = requests.get('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/formats/de.ini')
+def download_file(url):
+    file = urllib.request.urlopen(url)
+    response = file.read().decode('utf-8')
 
-    result = list()
-    text = file.text.split("\n")
+    text = response.split("\n")
     for line in text:
+        yield line
+
+
+def update_format_codes():
+    result = list()
+    for line in download_file('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/formats/de.ini'):
         if line.startswith(';') or line == '':
             pass
         else:
@@ -25,11 +31,8 @@ def update_format_codes():
 
 
 def update_jus_classifcation_codes():
-    file = requests.get('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/drsys/de.ini')
-
     result = list()
-    text = file.text.split("\n")
-    for line in text:
+    for line in download_file('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/drsys/de.ini'):
         if line.startswith(';') or line == '':
             pass
         else:
@@ -44,11 +47,8 @@ def update_jus_classifcation_codes():
 
 
 def update_library_network_codes():
-    file = requests.get('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/union/de.ini')
-
     result = list()
-    text = file.text.split("\n")
-    for line in text:
+    for line in download_file('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/union/de.ini'):
         if line.startswith(';') or line == '':
             pass
         else:
@@ -63,11 +63,8 @@ def update_library_network_codes():
 
 
 def update_language_codes():
-    file = requests.get('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/languagecodes/de.ini')
-
     result = list()
-    text = file.text.split("\n")
-    for line in text:
+    for line in download_file('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/languagecodes/de.ini'):
         if line.startswith(';') or line == '':
             pass
         else:
@@ -82,7 +79,7 @@ def update_language_codes():
 
 
 def update_libadmin_library_codes():
-    libs = json.loads(requests.get('https://www.swissbib.ch/mapportal.json').text)
+    libs = json.loads(urllib.request.urlopen('https://www.swissbib.ch/mapportal.json').read().decode('utf-8'))
 
     lib_list = list()
     for item in libs['data']:
