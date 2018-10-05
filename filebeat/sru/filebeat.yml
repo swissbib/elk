@@ -6,14 +6,14 @@
 filebeat.inputs:
   - type: log
     paths:
-      - /usr/local/vufind/apachelogs/access.swissbib.grepeasy*.log
+      - /usr/local/vufind/apachelogs/access
     fields:
-      source: srue
+      source: sru
     fields_under_root: true
     exclude_files: ['\.gz$']
 
 output.logstash:
-  hosts: ["sb-usg1.swissbib.unibas.ch:5044"]
+  hosts: ["sb-usg1.swissbib.unibas.ch:5045"]
 
 logging.to_files: true
 logging.level: warning
