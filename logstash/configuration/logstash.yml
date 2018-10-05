@@ -12,7 +12,7 @@ path.data: /var/lib/logstash
 # Logstash queue is stored to disk instead of in-memory. Ensures
 # no data is lost.
 queue.type: persisted
-path.queue: /var/lib/logstash/queue
+path.queue: /swissbib_index/logstash/queue
 queue.max_bytes: 4gb
 
 log.level: warn

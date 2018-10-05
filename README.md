@@ -18,8 +18,16 @@ To start FileBeat:
 
 Logstash uses various yml files to translate codes into human readable files. These should be updated regularly.
 
-This is done via cron job:
+This is done via cron job (with swissbib user):
 
 ```
+0 2 * * 0 /usr/bin/python3 /etc/logstash/presentation/dictionaries/update_logstash_dictionaries.py >> /etc/logstash/presentation/dictionaries/output.log 2>&1
+```
+
+Logstash saves persisted queues to:
 
 ```
+/swissbib_index/logstash/queue
+```
+
+This ensures that no messages are lost as long as this queue exists.
