@@ -6,7 +6,7 @@
 filebeat.inputs:
   - type: log
     paths:
-      - /usr/local/vufind/apachelogs/access
+      - /usr/local/vufind/apachelogs/access.log
     fields:
       source: sru
     fields_under_root: true
