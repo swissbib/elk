@@ -16,6 +16,16 @@ To start FileBeat:
 
 ## Logstash
 
+## Updates
+Logstash is deployed on `sb-usg1`. To update any config files they need to be copied into `/etc/logstash/`. 
+
+Use wget to overwrite the files (example):
+```
+wget -q https://raw.githubusercontent.com/swissbib/elk/master/logstash/configuration/presentation/2_filter.conf -O /etc/logstash/presentation/2_filter.conf 
+```
+Then restart Logstash to load the new configuration (with systemctl)
+
+### Reload yml files
 Logstash uses various yml files to translate codes into human readable files. These should be updated regularly.
 
 This is done via cron job (with swissbib user):
