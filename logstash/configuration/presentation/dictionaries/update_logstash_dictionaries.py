@@ -98,9 +98,26 @@ def update_libadmin_library_codes():
             file.write(' "' + item[0] + '": "' + item[1] + '"\n')
 
 
+def update_subject_area_codes():
+    result = list()
+    for line in download_file('https://raw.githubusercontent.com/swissbib/vufind/master/local/languages/ddc/de.ini'):
+        if line.startswith(';') or line == '':
+            pass
+        else:
+            temp = line.split('=')
+            code = temp[0].strip()
+            value = temp[1].strip(' ')
+            result.append([code, value])
+
+    with open('subject_area_codes.yml', 'w', encoding='utf-8') as file:
+        for item in result:
+            file.write(' "' + item[0] + '": ' + item[1] + '\n')
+
+
 if __name__ == '__main__':
     update_format_codes()
     update_jus_classifcation_codes()
     update_language_codes()
     update_libadmin_library_codes()
     update_library_network_codes()
+    update_subject_area_codes()
