@@ -10,7 +10,8 @@ for host in sb-uelk2 sb-uelk3 sb-uelk4
 
 do
 
-    scp ../kibana/configs/kibana.yml root@${host}:${BASE_KIBANA_DIR}
+    echo "deploy specific kibana.yml"
+    scp ../kibana/configs/$host/kibana.yml root@${host}:${BASE_KIBANA_DIR}
     #ssh root@${host} "ufw allow 5601"
     ssh root@${host} "systemctl restart kibana.service"
 
