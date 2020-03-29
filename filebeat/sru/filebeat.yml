@@ -13,7 +13,7 @@ filebeat.inputs:
     exclude_files: ['\.gz$']
 
 output.logstash:
-  hosts: ["sb-usg1.swissbib.unibas.ch:5045"]
+  hosts: ["sb-uelk1.swissbib.unibas.ch:5045"]
 
 logging.to_files: true
 logging.level: warning
