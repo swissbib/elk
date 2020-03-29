@@ -18,7 +18,8 @@
 #server.name: "your-hostname"
 
 # The URL of the Elasticsearch instance to use for all your queries.
-elasticsearch.url: "http://131.152.230.18:8080"
+#sb-uelk2
+elasticsearch.url: "http://131.152.230.173:8080"
 
 # When this setting's value is true Kibana uses the hostname specified in the server.host
 # setting. When the value of this setting is false, Kibana uses the hostname of the host
