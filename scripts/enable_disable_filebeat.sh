@@ -13,6 +13,6 @@ do
     echo "stop / disable / enable filebeat on $host"
     #ssh root@${host} "systemctl stop filebeat_swissbib.service; systemctl disable filebeat_swissbib.service"
 
-    ssh root@${host} "systemctl enable filebeat_swissbib.service"
+    ssh root@${host} "systemctl enable filebeat_swissbib.service; systemctl start filebeat_swissbib.service"
 
 done
